@@ -73,14 +73,15 @@ from goodsolute.entropy_corrections import compute_total_correction
 solvent_mol = Chem.MolFromSmiles('O')
 solvent_mol = Chem.AddHs(solvent_mol)
 AllChem.EmbedMolecule(solvent_mol, AllChem.ETKDG())
-solvent = Solvent.from_rdmol(solvent_mol, density=0.997, permittivity=78.3)
 
 # Build solute (CH3OH)
 solute_mol = Chem.MolFromSmiles('CO')
 solute_mol = Chem.AddHs(solute_mol)
 AllChem.EmbedMolecule(solute_mol, AllChem.ETKDG())
-solute = Solute.from_rdmol(solute_mol)
 
+# Calculate correction for RDKit structures
+solvent = Solvent.from_rdmol(solvent_mol, density=0.997, permittivity=78.3)
+solute = Solute.from_rdmol(solute_mol)
 correction = compute_total_correction(solvent, solute, temperature=298.15)
 print(f'Entropy correction: {correction:6g} kcal/(mol*K)')
 ```
