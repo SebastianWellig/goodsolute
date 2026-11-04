@@ -9,9 +9,9 @@ CLI tool for computing [Garza's entropy corrections](#references) for solvation 
 ## Requirements
 
 - Python 3.8 or newer.
-- [RDKit](https://www.rdkit.org/) for molecular properties and van der Waals volumes.
-- [cclib](https://cclib.github.io/) for reading quantum-chemistry output files.
-- [SciPy](https://scipy.org/) for physical constants and unit conversions.
+- [RDKit](https://www.rdkit.org/)
+- [cclib](https://cclib.github.io/)
+- [SciPy](https://scipy.org/)
 
 ## Installation
 
