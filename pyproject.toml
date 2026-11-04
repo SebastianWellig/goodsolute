@@ -22,10 +22,10 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = ""
+Homepage = "https://github.com/terpy-tools/goodsolute"
 
 [tool.setuptools]
-py-modules = ["goodsolute"]
+packages = ["goodsolute"]
 
 [tool.ruff]
 line-length = 160
