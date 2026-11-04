@@ -4,7 +4,7 @@
 [![Issues](https://img.shields.io/github/issues-raw/terpy-tools/goodsolute.svg?label=Issues)](https://github.com/terpy-tools/goodsolute/issues)
 [![License](https://img.shields.io/badge/License-MIT-orange.svg)](https://github.com/terpy-tools/goodsolute/blob/HEAD/LICENSE)
 
-CLI tool for computing [Garza's entropy corrections](#References) for solvation using the scaled-particle theory $S_\epsilon$ for cavity corrections from geometry of solute and solvent molecules. Prints total entropy correction in kcal/(mol·K) and Gibbs energy correction in kcal/mol.
+CLI tool for computing [Garza's entropy corrections](#References) for solvation from geometry of solute and solvent molecules. Uses the scaled-particle theory $S_\epsilon$ for cavity corrections. Prints total entropy correction in kcal/(mol·K) and Gibbs energy correction in kcal/mol.
 
 The solvation correction $\Delta_\mathrm{solv} S$ only include terms for translational $\Delta_\mathrm{solv} S^\mathrm{trans}$, rotational $\Delta_\mathrm{solv} S^\mathrm{rot}$ and cavity entropy $S^\mathrm{cav}$. Additional corrections, such as quasi-harmonic and standard state corrections, have to be done separately, for instance, with [`goodvibes`](https://github.com/patonlab/goodvibes).
 
