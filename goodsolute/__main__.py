@@ -1,6 +1,7 @@
 from argparse import ArgumentDefaultsHelpFormatter, ArgumentParser
 from pathlib import Path
 
+from .constants import ROOM_TEMPERATURE
 from .entropy_corrections import __doc__ as entropy_corrections_doc
 from .entropy_corrections import compute_total_correction
 from .io import read_solute, read_solvent
@@ -26,7 +27,7 @@ def main():
         '-t',
         '--temperature',
         type=float,
-        default=298.15,
+        default=ROOM_TEMPERATURE,
         help='Temperature [K].',
     )
     parser.add_argument(

@@ -10,18 +10,16 @@ https://doi.org/10.1039/D3CP00970J
 from math import log, pi
 
 from scipy.constants import Boltzmann as k_B
-from scipy.constants import R, angstrom, bar, calorie, kilo
+from scipy.constants import angstrom
 
+from .constants import R_KCAL, ROOM_TEMPERATURE, STANDARD_PRESSURE
 from .objects import Solute, Solvent, SphericalCavity
-
-STANDARD_PRESSURE = 1.0 * bar
-R_KCAL = R / (kilo * calorie)
 
 
 def compute_translational_correction(
     solvent: Solvent,
     solute: Solute,
-    temperature: float = 298.15,
+    temperature: float = ROOM_TEMPERATURE,
 ) -> float:
     """Return correction to translational entropy [kcal/(mol*K)].
 
