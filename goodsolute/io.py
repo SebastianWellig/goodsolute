@@ -34,7 +34,7 @@ RDREAD_MAP = {
 
 
 def ccData_to_rdmol(data: ccData, coords_idx=-1) -> Chem.Mol:
-    """Converts cclib data to RDkit mol
+    """Converts cclib data to RDKit mol
 
     :param data: cclib data.
     :param coords_idx: Index of the coordinates to read from cclib data (last by default).

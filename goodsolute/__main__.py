@@ -2,7 +2,7 @@ from argparse import ArgumentDefaultsHelpFormatter, ArgumentParser
 from pathlib import Path
 
 from .entropy_corrections import __doc__ as entropy_corrections_doc
-from .entropy_corrections import compute_total_coorection
+from .entropy_corrections import compute_total_correction
 from .io import read_solute, read_solvent
 
 
@@ -46,7 +46,7 @@ def main():
     args = parser.parse_args()
     solvent = read_solvent(args.solvent, density=args.density, permittivity=args.permittivity)
     solute = read_solute(args.solute)
-    entropy_corrections = compute_total_coorection(solvent, solute, temperature=args.temperature)
+    entropy_corrections = compute_total_correction(solvent, solute, temperature=args.temperature)
     print(80 * '-')
     print(entropy_corrections_doc)
     print(80 * '-')

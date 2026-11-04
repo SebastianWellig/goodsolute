@@ -71,7 +71,7 @@ def compute_cavity_correction(
     return -R_KCAL * (-log(1 - y) + 3 * y_ratio * radius_ratio + y_prime * radius_ratio**2)
 
 
-def compute_total_coorection(
+def compute_total_correction(
     solvent: Solvent,
     solute: Solute,
     temperature: float,
