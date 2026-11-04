@@ -21,7 +21,7 @@ R_KCAL = R / (kilo * calorie)
 def compute_translational_correction(
     solvent: Solvent,
     solute: Solute,
-    temperature: float,
+    temperature: float = 298.15,
 ) -> float:
     """Return correction to translational entropy [kcal/(mol*K)].
 
