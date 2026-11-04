@@ -11,7 +11,7 @@ from cclib.io import ccread
 from cclib.parser.data import ccData
 from rdkit import Chem
 
-from .objects import Solute, Solvent
+from .models import Solute, Solvent
 
 
 def _disable_implicit_atoms(mol: Optional[Chem.Mol]) -> Optional[Chem.Mol]:

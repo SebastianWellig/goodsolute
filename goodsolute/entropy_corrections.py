@@ -13,7 +13,7 @@ from scipy.constants import Boltzmann as k_B
 from scipy.constants import angstrom
 
 from .constants import R_KCAL, ROOM_TEMPERATURE, STANDARD_PRESSURE
-from .objects import Solute, Solvent, SphericalCavity
+from .models import Solute, Solvent, SphericalCavity
 
 
 def compute_translational_correction(

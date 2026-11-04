@@ -6,7 +6,7 @@ from goodsolute.entropy_corrections import (
     compute_total_correction,
     compute_translational_correction,
 )
-from goodsolute.objects import Solute, Solvent, SphericalCavity
+from goodsolute.models import Solute, Solvent, SphericalCavity
 
 
 @pytest.mark.parametrize(
