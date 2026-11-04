@@ -5,6 +5,7 @@ Input geometries should include explicit hydrogen coordinates.
 
 from functools import partial
 from pathlib import Path
+from typing import Callable, Dict, Optional
 
 from cclib.io import ccread
 from cclib.parser.data import ccData
@@ -13,7 +14,7 @@ from rdkit import Chem
 from .objects import Solute, Solvent
 
 
-def _disable_implicit_atoms(mol: Chem.Mol):
+def _disable_implicit_atoms(mol: Optional[Chem.Mol]) -> Optional[Chem.Mol]:
     if mol is None:
         return None
 
@@ -24,7 +25,7 @@ def _disable_implicit_atoms(mol: Chem.Mol):
     return mol
 
 
-RDREAD_MAP = {
+RDREAD_MAP: Dict[str, Callable[[str], Optional[Chem.Mol]]] = {
     '.xyz': lambda p: _disable_implicit_atoms(Chem.MolFromXYZFile(p)),
     '.mol': partial(Chem.MolFromMolFile, removeHs=False),
     '.sdf': lambda p: Chem.SDMolSupplier(p, removeHs=False)[0],

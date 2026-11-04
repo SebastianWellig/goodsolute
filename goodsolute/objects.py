@@ -22,7 +22,7 @@ class Molecule:
         self.vdW_volume = vdW_volume
 
     @classmethod
-    def from_rdmol(cls, mol: Chem.Mol, **kwargs):
+    def from_rdmol(cls, mol: Chem.Mol, **kwargs) -> 'Molecule':
         """Create instance from an RDKit molecule"""
         return cls(
             molar_mass=MolWt(mol),
@@ -54,7 +54,7 @@ class Solvent(Molecule):
         self.free_volume = molar_mass / N_A / density_per_angstrom3 - vdW_volume
 
     @classmethod
-    def from_rdmol(cls, mol: Chem.Mol, density: float, permittivity: float):
+    def from_rdmol(cls, mol: Chem.Mol, density: float, permittivity: float) -> 'Solvent':
         """Create instance from an RDKit molecule"""
         return super().from_rdmol(mol, density=density, permittivity=permittivity)
 
