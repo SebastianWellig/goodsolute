@@ -4,9 +4,7 @@
 [![Issues](https://img.shields.io/github/issues-raw/terpy-tools/goodsolute.svg?label=Issues)](https://github.com/terpy-tools/goodsolute/issues)
 [![License](https://img.shields.io/badge/License-MIT-orange.svg)](https://github.com/terpy-tools/goodsolute/blob/HEAD/LICENSE)
 
-CLI tool for computing [Garza's entropy corrections](#References) for solvation from geometry of solute and solvent molecules. Uses the scaled-particle theory $S_\epsilon$ for cavity corrections. Prints total entropy correction in kcal/(mol·K) and Gibbs energy correction in kcal/mol.
-
-The solvation correction $\Delta_\mathrm{solv} S$ only include terms for translational $\Delta_\mathrm{solv} S^\mathrm{trans}$, rotational $\Delta_\mathrm{solv} S^\mathrm{rot}$ and cavity entropy $S^\mathrm{cav}$. Additional corrections, such as quasi-harmonic and standard state corrections, have to be done separately, for instance, with [`goodvibes`](https://github.com/patonlab/goodvibes).
+CLI tool for computing [Garza's entropy corrections](#references) for solvation from geometry of solute and solvent molecules. Uses the scaled-particle theory $S_\epsilon$ for cavity corrections. Prints total entropy correction in kcal/(mol·K) and Gibbs energy correction in kcal/mol.
 
 ## Requirements
 
@@ -61,11 +59,32 @@ Solvation correction to Gibbs energy = 4.53759 kcal/mol
 --------------------------------------------------------------------------------
 ```
 
+## Further Considerations
+### Potential Double Counting from the Implicit Solvent Model
+
+Some implicit solvation models, such as SMD, include non-electrostatic contributions $G_\mathrm{nes}$, which are fitted to reproduce $\Delta_\mathrm{solv} G$. [Ariai and Gellrich](#references) noted that there is a danger of double counting when applying Garza's corrections and therefore proposed that removing $G_\mathrm{nes}$ can be more accurate.
+
+In the case of SMD, $G_\mathrm{nes}$ is usually reported as `SMD-CDS`, for instance in Gaussian log file:
+```log
+ SCF Done:  E(UMN15) =  -2160.62761811     A.U. after   20 cycles
+            NFock= 20  Conv=0.90D-08     -V/T= 2.0041
+ <Sx>= 0.0000 <Sy>= 0.0000 <Sz>= 0.5000 <S**2>= 0.7596 S= 0.5048
+ <L.S>=  0.00000000000    
+ SMD-CDS (non-electrostatic) energy       (kcal/mol) =      -2.99
+ (included in total energy above)
+ Annihilation of the first spin contaminant:
+```
+
+### Additional Corrections
+
+The solvation correction $\Delta_\mathrm{solv} S$ only include terms for translational $\Delta_\mathrm{solv} S^\mathrm{trans}$, rotational $\Delta_\mathrm{solv} S^\mathrm{rot}$ and cavity entropy $S^\mathrm{cav}$. Additional corrections, such as quasi-harmonic and standard state corrections, have to be done separately, for instance, with [`goodvibes`](https://github.com/patonlab/goodvibes).
+
+
 
 ## References
 
-- [A. J. Garza, *J. Chem. Theory Comput.* **2019**, *15*, 3204-3214.](https://doi.org/10.1021/acs.jctc.9b00214)
-- [J. Ariai, U. Gellrich, *Phys. Chem. Chem. Phys.* **2023**, *25*, 14005-14015.](https://doi.org/10.1039/D3CP00970J)
+1. [A. J. Garza, *J. Chem. Theory Comput.* **2019**, *15*, 3204-3214.](https://doi.org/10.1021/acs.jctc.9b00214)
+2. [J. Ariai, U. Gellrich, *Phys. Chem. Chem. Phys.* **2023**, *25*, 14005-14015.](https://doi.org/10.1039/D3CP00970J)
 
 ## License
 
