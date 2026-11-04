@@ -72,7 +72,7 @@ def compute_cavity_correction(
 def compute_total_correction(
     solvent: Solvent,
     solute: Solute,
-    temperature: float,
+    temperature: float = ROOM_TEMPERATURE,
 ) -> float:
     """Return total correction to entropy [kcal/(mol*K)].
 
