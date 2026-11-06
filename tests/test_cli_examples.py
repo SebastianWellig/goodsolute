@@ -28,6 +28,15 @@ ROOT_DIR = Path(__file__).resolve().parent.parent
             },
             id='methanol-in-water-323.15K',
         ),
+        pytest.param(
+            {
+                'solute': 'tests/data/Cl-.xyz',
+                'solvent': 'tests/data/H2O.mol',
+                'options': {'-p': 78.3, '-d': 0.997},
+                'expected': {'dS': -0.0167807, 'dG': 5.00317},
+            },
+            id='chloride-in-water-RT',
+        ),
     ],
 )
 def test_cli_examples(case):
